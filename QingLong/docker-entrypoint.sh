@@ -7,8 +7,8 @@ DEFAULT_RCLONE_CONF="[huggingface]
 type = webdav
 url = https://domi.teracloud.jp/dav/
 vendor = other
-user = 15614620010
-pass = 9dlp_OwsSLLOvxzCDyQjUm9u0hR-hyG63-06hxJbqwI"
+user = zhanghaipengbeifen1
+pass = PdK8wF6V9HDHHiM7482nbfCqlUSvBwjL_k-0nd8-zBk"
 
 DEFAULT_NOTIFY_CONFIG='{
   "type": "weWorkBot",
@@ -24,8 +24,8 @@ NOTIFY_CONFIG="${NOTIFY_CONFIG:-$DEFAULT_NOTIFY_CONFIG}"
 
 # ▼▼▼▼▼▼▼▼▼▼▼▼ 以下为您的原始脚本（完全不变） ▼▼▼▼▼▼▼▼▼▼▼▼
 dir_shell=/ql/shell
-. $dir_shell/share.sh
-. $dir_shell/env.sh
+。 $dir_shell/share.sh
+。 $dir_shell/env.sh
 
 echo -e "======================写入rclone配置========================\n"
 echo "$RCLONE_CONF" > ~/.config/rclone/rclone.conf
@@ -97,7 +97,7 @@ init_auth_info "\"username\": \"$ADMIN_USERNAME\", \"password\": \"$ADMIN_PASSWO
 
 if [ -n "$RCLONE_CONF" ]; then
   echo -e "##########同步备份############"
-  REMOTE_FOLDER="${RCLONE_REMOTE_PATH:-huggingface:/qiangshi}"
+  REMOTE_FOLDER="${RCLONE_REMOTE_PATH:-huggingface:/qiangyilingwu}"
   echo "[DEBUG] 同步路径：$REMOTE_FOLDER"
 
   OUTPUT=$(rclone ls "$REMOTE_FOLDER" 2>&1)
@@ -125,10 +125,10 @@ if [ -n "$NOTIFY_CONFIG" ]; then
     echo "$NOTIFY_CONFIG" > /ql/data/config/notify.json
     
     # 提取路径名称（兼容各种格式）
-    REMOTE_NAME=$(echo "${RCLONE_REMOTE_PATH:-huggingface:/qiangshi}" | 
+    REMOTE_NAME=$(echo "${RCLONE_REMOTE_PATH:-huggingface:/qiangyilingwu}" | 
                  awk -F':' '{print $2}' | 
                  sed 's:^/*::; s:/.*$::')
-    REMOTE_NAME=${REMOTE_NAME:-qiangshi}
+    REMOTE_NAME=${REMOTE_NAME:-qiangyilingwu}
 
     # 加载通知API
     dir_root=/ql && source /ql/shell/api.sh
